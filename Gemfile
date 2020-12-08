@@ -37,6 +37,18 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
+
+# Image upload service
+gem 'carrierwave'
+# makes thumbnails with Carrierwave
+gem 'mini_magick'
+
+# Better Errors
+gem 'better_errors', '~> 2.4'
+
+# For Live reload of views
+gem 'guard-livereload'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
