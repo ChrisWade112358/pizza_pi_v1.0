@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_010241) do
+ActiveRecord::Schema.define(version: 2020_12_13_132020) do
 
   create_table "carts", force: :cascade do |t|
     t.float "total", default: 0.0
@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_010241) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
-    t.string "addres"
     t.string "city"
     t.string "state"
     t.integer "zip"
@@ -87,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_010241) do
     t.boolean "manager", default: false
     t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
