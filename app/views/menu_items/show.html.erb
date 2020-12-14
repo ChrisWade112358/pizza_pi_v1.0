@@ -16,3 +16,6 @@
     <strong>Description:</strong><br>
     <%= @menu_item.description %>
 </p>
+
+<%= button_to "Edit", edit_menu_item_path(@menu_item), :method => :get %>
+<%= button_to "Delete", menu_item_path(@menu_item), method: :delete, data: { confirm: " Are you sure?" } %>

@@ -15,11 +15,38 @@ class MenuItemsController < ApplicationController
         
         @menu_item = MenuItem.new(menu_item_params)
         if @menu_item.save
-            redirect_to menu_item_path(@menu_item), notice: "Menu Item was successfully created."
+            redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully created."
         else
             render 'new'
         end
     end
 
+    def edit
+        @menu_item = MenuItem.find(params[:id])
+    end
+
+    def update
+        @menu_item = MenuItem.find(params[:id])
+        @menu_item.update(menu_item_params)
+        redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully edited."
+    end
+
+    def destroy
+        MenuItem.find(params[:id]).destroy
+        redirect_to menu_items_path
+    end
+
+
+
+
+
+
+
+
+    private
+
+        def menu_item_params
+            params.require(:menu_item).permit(:name, :description, :price, :category, :image)
+        end
 
 end
