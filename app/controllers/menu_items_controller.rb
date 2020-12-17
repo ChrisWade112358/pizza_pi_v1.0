@@ -13,7 +13,7 @@ class MenuItemsController < ApplicationController
 
     def create
         
-        @menu_item = MenuItem.new(menu_item_params)
+        @menu_item = MenuItem.build(menu_item_params)
         if @menu_item.save
             redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully created."
         else
@@ -27,8 +27,11 @@ class MenuItemsController < ApplicationController
 
     def update
         @menu_item = MenuItem.find(params[:id])
-        @menu_item.update(menu_item_params)
-        redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully edited."
+        if @menu_item.update(menu_item_params)
+            redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully edited."
+        else
+            render 'edit'
+        end
     end
 
     def destroy
