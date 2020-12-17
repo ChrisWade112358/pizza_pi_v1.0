@@ -1,0 +1,16 @@
+<h1>Ingredient Inventory Page</h1>
+
+<%= button_to "New Ingredient", new_ingredient_path, method: :get %>
+
+<% @ingredients.each do |i| %>
+    <h2><%= i.name %></h2>
+    <h3>In Use ?:</h3><p><%= i.in_use %></p>
+    <h3>Cost:</h3><p>$<%= i.cost %></p>
+    <h3>Description:</h3><p><%= i.description %></p>
+    <h3>Amount In Stock:</h3><p><%= i.amount_in_stock %></p>
+    <h3>Amount Used:</h3><p><%= i.amount_used %></p>
+    <h3>Intake Date:</h3><p><%= i.intake %></p>
+    <h3>Expiration Date:</h3><p><%= i.expiration %></p>
+    <%= button_to "Edit", edit_ingredient_path(i), :method => :get %>
+    <%= button_to "Delete", ingredient_path(i), method: :delete, data: { confirm: " Are you sure?" } %>
+<% end %>

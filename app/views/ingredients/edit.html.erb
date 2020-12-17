@@ -1,0 +1,15 @@
+<%= form_for @ingredient do |form| %>
+    Name: <%= form.text_field :name, required: true %><br>
+    Cost: <%= form.text_field :cost, required: true %><br>
+    Intake Date: <%= form.date_field :intake, required: true %><br>
+    Expiration Date: <%= form.date_field :expiration, required: true %><br>
+    Description: <%= form.text_area :description %><br>
+
+    Amount in Stock: <%= form.text_field :amount_in_stock, required: true, data: { confirm: " Are you sure?" }%><br>
+    Amount Used: <%= form.text_field :amount_used, required: true, data: { confirm: "Are you sure?" }%><br>
+    In Use: <% form.check_box :in_use, data: { confirm: "Are you sure?" }%><br>
+
+
+    
+    <%= form.submit %>
+<% end %>
