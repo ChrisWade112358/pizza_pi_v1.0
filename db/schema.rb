@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_132020) do
+ActiveRecord::Schema.define(version: 2020_12_17_012555) do
 
   create_table "carts", force: :cascade do |t|
     t.float "total", default: 0.0
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_12_13_132020) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "in_use", default: false
   end
 
   create_table "line_items", force: :cascade do |t|
