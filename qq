@@ -1,0 +1,11 @@
+
+[1mFrom:[0m /home/swade/pizza_pi_v1.0/app/views/pages/home.html.erb:2 #<Class:0x000055af8fc62688>#_app_views_pages_home_html_erb___396334936642533712_47106263847280:
+
+    [1;34m1[0m: <h1>Pages#home</h1>
+ => [1;34m2[0m: <% binding.pry %>
+    [1;34m3[0m: <% if current_user %>
+    [1;34m4[0m:     <h1>Welcome <%= current_user.first_name %></h1>
+    [1;34m5[0m:     <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    [1;34m6[0m:     <%= link_to 'Edit User', edit_user_registration_path %>
+    [1;34m7[0m: <% else %>
+

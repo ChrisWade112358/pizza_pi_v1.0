@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  before_action :current_cart
   def index
     @menu_items = MenuItem.all
   end
