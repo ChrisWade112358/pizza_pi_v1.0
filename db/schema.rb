@@ -10,29 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_012555) do
+ActiveRecord::Schema.define(version: 2020_12_19_142236) do
 
   create_table "carts", force: :cascade do |t|
-    t.float "total", default: 0.0
-    t.float "tax", default: 0.0
-    t.float "delivery_fee", default: 0.0
     t.boolean "delivery", default: false
-    t.float "subtotal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "total", precision: 15, scale: 2
+    t.decimal "tax", precision: 15, scale: 2
+    t.decimal "delivery_fee", precision: 15, scale: 2
+    t.decimal "subtotal", precision: 15, scale: 2
   end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.float "cost", default: 0.0, null: false
-    t.float "amount_in_stock", default: 0.0, null: false
-    t.float "amount_used"
     t.date "intake"
     t.date "expiration"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "in_use", default: false
+    t.string "unit_of_measurement"
+    t.decimal "cost", precision: 15, scale: 2
+    t.decimal "amount_in_stock", precision: 15, scale: 3
+    t.decimal "amount_used", precision: 15, scale: 3
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -53,11 +54,11 @@ ActiveRecord::Schema.define(version: 2020_12_17_012555) do
   create_table "menu_items", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description"
-    t.float "price"
     t.string "category", default: "", null: false
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 15, scale: 2
   end
 
   create_table "sessions", force: :cascade do |t|

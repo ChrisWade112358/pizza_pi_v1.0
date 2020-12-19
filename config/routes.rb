@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'menus/index'
-  get 'menus/show'
+  resources :menus, only:[:index, :show]
   resources :carts
   resources :line_items
   resources :ingredients
