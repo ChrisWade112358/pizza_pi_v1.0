@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_19_142236) do
+ActiveRecord::Schema.define(version: 2020_12_19_143351) do
 
   create_table "carts", force: :cascade do |t|
     t.boolean "delivery", default: false
@@ -37,18 +37,22 @@ ActiveRecord::Schema.define(version: 2020_12_19_142236) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "menu_item_id"
-    t.integer "cart_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "menu_item_id", null: false
+    t.integer "cart_id", null: false
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["menu_item_id"], name: "index_line_items_on_menu_item_id"
   end
 
   create_table "menu_ingredient_joins", force: :cascade do |t|
-    t.integer "menu_item_id"
-    t.integer "ingredient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "menu_item_id", null: false
+    t.integer "ingredient_id", null: false
+    t.index ["ingredient_id"], name: "index_menu_ingredient_joins_on_ingredient_id"
+    t.index ["menu_item_id"], name: "index_menu_ingredient_joins_on_menu_item_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -93,4 +97,8 @@ ActiveRecord::Schema.define(version: 2020_12_19_142236) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "menu_items"
+  add_foreign_key "menu_ingredient_joins", "ingredients"
+  add_foreign_key "menu_ingredient_joins", "menu_items"
 end
