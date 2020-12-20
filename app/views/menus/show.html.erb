@@ -9,7 +9,7 @@
     <strong>Category: <%= @menu_item.category %></strong>
 </p>
 <p>
-    <strong><%= number_to_currency(@menu_item.price) %></strong>
+    <strong><%= @menu_item.price %></strong>
 </p>
 
 <p>
@@ -17,10 +17,11 @@
     <%= @menu_item.description %>
 </p>
 
-<% binding.pry %>
+
 <%= form_tag line_items_path do%>
-    <%= hidden_field_tag :cart_id, current_cart.id%>
+    <%= hidden_field_tag :cart_id, @current_cart.id%>
     <%= hidden_field_tag :menu_item_id, @menu_item.id%>
+    <%= hidden_field_tag :price, @menu_item.price%>
     <%= number_field_tag :quantity, 1 %>
     <%= submit_tag "Add to Cart"%>
 <% end %>
