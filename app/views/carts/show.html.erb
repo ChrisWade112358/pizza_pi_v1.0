@@ -1,11 +1,6 @@
 <h1>Cart Show Page</h1>
 
 <h1>Cart:</h1>
-<% @cart.line_items.each do |i| %>
-    <ul>
-        <li><h2><%= i.menu_item.name %></h2></li>
-        <li><b><%= i.menu_item.price %></b></li>
-        <li><%= i.quantity %></li>
-        <li><i><%= number_to_currency(i.line_item_subtotal) %></i></li>
-    </ul>
-<% end %>
+<div id="cart_item">
+    <%= render 'carts_item'%>
+</div>

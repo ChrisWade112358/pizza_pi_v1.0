@@ -28,6 +28,36 @@ class LineItemsController < ApplicationController
     end
 
     def update
+        @line_item = LineItem.find_by(id: params[:id])
+        if @line_item.update(line_item_params)
+            redirect_to cart_path(@current_cart)
+        else
+            redirect_to cart_path(@current_cart), alert: "Item did NOT update."
+        end
         
+    end
+
+    def destroy
+        @line_item = LineItem.find_by(id: params[:id]).destroy
+        redirect_to cart_path(@current_cart), notice: "Item deleted from Cart."
+    end
+
+
+
+
+    private
+
+    def line_item_params
+        params.require(:line_item).permit(
+            :quantity,
+            :menu_item_id,
+            :cart_id,
+            :line_item_subtotal
+    
+        )
+    end
+
+    
+
 
 end
