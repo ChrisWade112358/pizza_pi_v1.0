@@ -12,9 +12,10 @@ class Cart < ApplicationRecord
 
     def cart_params
         params.require(:cart).permit(
-            :delivery, 
             :total, 
-            :tax, 
+            :tax,
+            :tax_rate, 
+            :delivery, 
             :delivery_fee, 
             :subtotal, 
             :session_id, 
@@ -25,8 +26,12 @@ class Cart < ApplicationRecord
             :city, 
             :zip, 
             :phone_number
+            
         )
     end
+
+    def total_tax
+        self[:tax] = subtotal * tax_rate
 
 
     
