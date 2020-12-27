@@ -1,7 +1,7 @@
 class LineItem < ApplicationRecord
-    belongs_to :cart
+    belongs_to :order
     belongs_to :menu_item
-
+    
     before_save :set_total
 
     

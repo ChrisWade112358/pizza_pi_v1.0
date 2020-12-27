@@ -1,6 +1,6 @@
 class Cart < ApplicationRecord
-    has_many :line_items
-    has_many :menu_items, through: :line_items
+    has_many :orders
+    has_many :line_items, through: :orders
     belongs_to :user
 
     
@@ -12,20 +12,10 @@ class Cart < ApplicationRecord
 
     def cart_params
         params.require(:cart).permit(
-            :total, 
-            :tax,
-            :tax_rate, 
-            :delivery, 
-            :delivery_fee, 
-            :subtotal, 
+           
             :session_id, 
             :user_id, 
-            :first_name, 
-            :last_name, 
-            :address, 
-            :city, 
-            :zip, 
-            :phone_number
+           
             
         )
     end
