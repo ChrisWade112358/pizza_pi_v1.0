@@ -20,8 +20,7 @@ class Cart < ApplicationRecord
         )
     end
 
-    def total_tax
-        self[:tax] = subtotal * tax_rate
+   
 
 
     
